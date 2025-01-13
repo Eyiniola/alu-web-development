@@ -29,9 +29,9 @@ class LIFOCache(BaseCaching):
         if key is not None and item is not None:
             # If the cache is at or above max capacity, remove the oldest item
             if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
-                first_key = list(self.cache_data.keys())[-1]
-                print(f"DISCARD: {first_key}")
-                del self.cache_data[first_key]
+                last_key = list(self.cache_data.keys())[-1]
+                print(f"DISCARD: {last_key}")
+                del self.cache_data[last_key]
 
             # Add the new key-value pair
             self.cache_data[key] = item
