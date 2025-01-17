@@ -29,3 +29,4 @@ class MRUCache(BaseCaching):
         del self.cache_data[key]
         self.cache_data[key] = item
         return self.cache_data[key]
+    
