@@ -11,6 +11,7 @@ from api.v1.auth.auth import Auth
 from api.v1.auth.basic_auth import BasicAuth
 from api.v1.auth.session_auth import SessionAuth
 
+
 app = Flask(__name__)
 app.register_blueprint(app_views)
 CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
@@ -58,7 +59,9 @@ def before_request_func():
                       '/api/v1/auth_session/login/']
     if not auth.require_auth(path, excluded_paths):
         return
-    if auth.authorization_header(request) is None:
+
+    if (auth.authorization_header(request) is None
+            and auth.session_cookie(request) is None):
         abort(401)
     if auth.current_user(request) is None:
         abort(403)
