@@ -2,9 +2,10 @@
 """
 Auth class
 """
-import os
+
 from flask import request
 from typing import List, TypeVar
+import os
 
 
 class Auth:
@@ -39,7 +40,7 @@ class Auth:
         """ current_user
         """
         return None
-    
+
     def session_cookie(self, request=None):
         """ session_cookie
         """
